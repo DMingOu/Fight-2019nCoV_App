@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id = "@+id/tv_title_item_news"
+            android:textSize="18sp"
+            tools:text = "我是标题-我是标题-我是标题-我是标题"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id = "@+id/tv_summary_item_news"
+            android:textSize="15sp"
+            tools:text = "我是概括-我是概括-我是概括-我是概括-我是概括-我是概括-我是概括-我是概括-我是概括-我是概括"
+            android:layout_below="@id/tv_title_item_news"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id = "@+id/tv_infoSource_item_news"
+            android:textSize="15sp"
+            tools:text = "人民日报"
+            android:layout_alignParentBottom="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id = "@+id/tv_provinceName_item_news"
+            android:textSize="15sp"
+            tools:text = "广西壮族自治区"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/tv_infoSource_item_news"
+            android:layout_marginStart="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id = "@+id/tv_pubDateStr_item_news"
+            android:textSize="15sp"
+            tools:text = "4小时前"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
+            />
+
+
+
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
