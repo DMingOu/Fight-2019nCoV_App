@@ -1,5 +1,6 @@
 package com.odm.fight_2019ncov.base
 
+import com.blankj.utilcode.util.LogUtils
 import com.odm.fight_2019ncov.model.net.ApiResponse
 import com.odm.fight_2019ncov.model.net.ApiResult
 import kotlinx.coroutines.CoroutineScope
@@ -25,6 +26,7 @@ open class BaseRepository {
             request()
         } catch (exception: Exception) {
             // 当调用API抛出一个异常,,将它转换为一个IOException
+            LogUtils.e(exception.message.toString())
             ApiResult.Error(
                 IOException(
                     errorMessage,

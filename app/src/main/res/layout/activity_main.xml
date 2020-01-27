@@ -11,6 +11,7 @@
         android:id= "@+id/frl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/bbl_main"
         />
 
     <com.chaychan.library.BottomBarLayout

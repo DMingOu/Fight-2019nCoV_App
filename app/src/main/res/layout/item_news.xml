@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="120dp"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id = "@+id/tv_summary_item_news"
-            android:textSize="15sp"
+            android:textSize="10sp"
             tools:text = "我是概括-我是概括-我是概括-我是概括-我是概括-我是概括-我是概括-我是概括-我是概括-我是概括"
             android:layout_below="@id/tv_title_item_news"
             />
@@ -29,31 +31,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id = "@+id/tv_infoSource_item_news"
-            android:textSize="15sp"
+            android:textSize="14sp"
             tools:text = "人民日报"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id = "@+id/tv_provinceName_item_news"
-            android:textSize="15sp"
+            android:textSize="14sp"
             tools:text = "广西壮族自治区"
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@id/tv_infoSource_item_news"
             android:layout_marginStart="20dp"
+            android:layout_marginBottom="5dp"
+
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id = "@+id/tv_pubDateStr_item_news"
-            android:textSize="15sp"
+            android:textSize="14sp"
             tools:text = "4小时前"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             />
 
 

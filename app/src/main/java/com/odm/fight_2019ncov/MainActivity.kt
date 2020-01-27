@@ -41,7 +41,7 @@ class MainActivity : BaseActivity() {
             supportFragmentManager.beginTransaction()
                 .remove(targetFragment)
                 .commitNow()
-            Logger.d("targetFragment 被remove    pos : $position    的Fragment ，被添加进去")
+
         }
         ft.replace(R.id.frl_container, targetFragment)
             .show(targetFragment)

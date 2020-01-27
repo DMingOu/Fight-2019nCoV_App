@@ -25,12 +25,20 @@ interface ApiService {
     /**
      * 获取24小时内最新消息（实时）
      */
-    @GET("/data/getTimelineService")
-    suspend fun getLatestNews() : ApiResponse<List<LatestNews>>
+/*    @GET("/data/getTimelineService")
+    suspend fun getLatestNews() : ApiResponse< MutableList<LatestNews> >*/
+
+    /**
+     * 获取24小时内最新消息（实时）Call 不可阻塞
+     */
+     @Streaming
+     @GET
+     fun getLatestNewsRaw(@Url url: String) : Call<ResponseBody>
 
     /**
      * 获取对应地区的疫情情况
      */
+
     @GET("/data/getAreaStat/{provice}")
     suspend fun getAreaSituation( @Path("provice") provice : String) : ApiResponse<AreaSituation>
 

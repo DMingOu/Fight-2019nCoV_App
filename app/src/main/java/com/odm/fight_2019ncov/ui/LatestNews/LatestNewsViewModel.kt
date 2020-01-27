@@ -1,11 +1,16 @@
 package com.odm.fight_2019ncov.ui.LatestNews
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.odm.fight_2019ncov.base.BaseRepository
+import com.blankj.utilcode.util.LogUtils
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.odm.fight_2019ncov.base.BaseViewModel
 import com.odm.fight_2019ncov.model.entity.LatestNews
-import com.odm.fight_2019ncov.model.net.ApiResult
+import java.io.Reader
+import java.lang.reflect.Type
+
 
 /**
  * @description: 实时最新消息 ViewModel
@@ -21,29 +26,70 @@ class LatestNewsViewModel (private val repository : LatestNewsRepository) : Base
 
 
     companion object{
-        const val tag = "SecondViewModel"
+        const val tag = "MainViewModel"
     }
 
     init {
-        //初始化ViewModel时自动拉取Banner数据
-        getBannerData()
+        //初始化ViewModel时自动拉取数据
+        getLatestNewsRaw()
     }
 
 
-    fun getBannerData() {
-//        viewModelScope.launch {
-//            val result = repository.suspendGetBannerData()
-//            if(result  is Result.Success) {
-//                _bannerList.value = result.data
-//            }
-//        }
-        launch{
+    fun getLatestNews() {
+
+/*        launch{
             val result = repository.suspendGetLatestNewsData()
             if(result  is ApiResult.Success) {
                 _newsList.value = result.data
-
+                LogUtils.e("获取  新闻数据")
             }
-        }
+            if(result is ApiResult.Error) {
+                LogUtils.e("获取  新闻数据 失败 "  + result.exception.message)
+                LogUtils.e(result.toString())
+            }
+        }*/
+    }
+
+    fun getLatestNewsRaw() {
+            launch {
+                val result = repository.suspendGetLatestNewsRawData()
+                val reader: Reader = result.body()!!.charStream()
+                if(result.raw().isSuccessful) {
+                    val str = result.body()
+//                    Log.e(tag , str.toString())
+//                    LogUtils.d(str)
+                    val listType: Type =  object : TypeToken<List<LatestNews>>() {}.type
+                    val list: List<LatestNews> = Gson().fromJson(reader, listType)
+                    _newsList.value  =  list
+                } else {
+                    LogUtils.e("请求失败")
+                }
+            }
+
+/*                val call = NetRetrofitClient.service.getLatestNewsRaw()
+                Log.e(tag , "发出请求")
+                call.enqueue(object : retrofit2.Callback<ResponseBody> {
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        t.printStackTrace()
+                    }
+
+                    override fun onResponse(
+                        call: Call<ResponseBody>,
+                        response: retrofit2.Response<ResponseBody>
+                    ) {
+                        if(response.isSuccessful) {
+                            Log.e(tag, "Response成功返回")
+                            viewModelScope.launch {
+                                saveDownLoadFile(response.body() ,url)
+                            }
+                            Log.e(tag, "body get!！！")
+                        } else {
+                            Log.e(tag ,"response 返回出错")
+                        }
+                    }
+                })*/
+
+
     }
 
 }

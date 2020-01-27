@@ -1,6 +1,7 @@
 package com.odm.fight_2019ncov.ui.LatestNews
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.blankj.utilcode.util.LogUtils
 import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseFragment
 import com.orhanobut.logger.Logger
@@ -34,6 +36,7 @@ class LatestNewsFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_lateset_news, container, false)
+
         return view
     }
 
@@ -43,16 +46,18 @@ class LatestNewsFragment : BaseFragment() {
         initObservableLiveData()
     }
 
+    /**
+     * 初始化控件
+     * 不可以在onCreateView中调用否则导致异常 E/RecyclerView: No adapter attached; skipping layout
+     */
     override fun initViews() {
         ivCheer = activity?.findViewById(R.id.iv_banner)
         rvNews = activity?.findViewById(R.id.rv_latest_news)
         //初始化 RecyclerView 的适配器
-        viewModel.newsList.let {
-            Logger.d("初始化Adapter")
-            rvAdapter = LatestNewsAdapter(it.value?.toMutableList())
-            rvNews?.adapter = rvAdapter
-            rvNews?.layoutManager = LinearLayoutManager(requireContext())
-        }
+        LogUtils.e("初始化Adapter")
+        rvAdapter = LatestNewsAdapter(mutableListOf())
+        rvNews?.layoutManager = LinearLayoutManager(this.context)
+        rvNews?.adapter = rvAdapter
         rvAdapter?.setOnItemClickListener { adapter, view, position ->
             //Todo 启动WebView网页
         }
@@ -70,9 +75,12 @@ class LatestNewsFragment : BaseFragment() {
         //对ViewModel的数据进行观察，方式2
         viewModel.apply {
             newsList.observe(this@LatestNewsFragment, Observer {
-                if(rvAdapter == null) Logger.d("Adapter 为空")
-               rvAdapter?.data = it.toMutableList()
+                if(rvAdapter == null)  LogUtils.e("rvAdapter 为空")
+//                rvAdapter?.data = it.toMutableList()
+                rvAdapter?.addData(it.toMutableList())
+                Log.e(tag,it.toMutableList().toString())
                 rvAdapter?.notifyDataSetChanged()
+                LogUtils.e("刷新数据")
             })
         }
     }

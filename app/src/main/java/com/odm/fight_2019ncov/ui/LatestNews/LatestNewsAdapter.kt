@@ -15,8 +15,10 @@ class LatestNewsAdapter (data : MutableList<LatestNews> ?)
     : BaseQuickAdapter <LatestNews , BaseViewHolder>(R.layout.item_news , data) {
 
     override fun convert(helper: BaseViewHolder, item: LatestNews?) {
-        if (item == null) return
-        Logger.d(item.summary)
+        if (item == null) {
+            Logger.d("item  null")
+            return
+        }
         helper.setText(R.id.tv_title_item_news , item.title)
         helper.setText(R.id.tv_infoSource_item_news,item.infoSource)
         helper.setText(R.id.tv_provinceName_item_news ,item.provinceName)

@@ -28,7 +28,7 @@ class App : Application() {
         //Koin依赖注入
         startKoin {
             androidLogger()
-            androidContext(this@App)
+            androidContext(CONTEXT)
             //androidFileProperties()
             modules(AppModule)
         }
