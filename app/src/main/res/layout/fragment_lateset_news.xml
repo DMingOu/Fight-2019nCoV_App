@@ -15,8 +15,9 @@
             <ImageView
                 android:id = "@+id/iv_banner"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src = "@drawable/ic_launcher_background"
+                android:layout_height="200dp"
+                android:background = "@drawable/banner"
+                android:layout_marginBottom="10dp"
                 />
 
             <androidx.recyclerview.widget.RecyclerView

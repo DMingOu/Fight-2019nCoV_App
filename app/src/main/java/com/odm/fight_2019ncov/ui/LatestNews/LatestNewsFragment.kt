@@ -76,7 +76,6 @@ class LatestNewsFragment : BaseFragment() {
         viewModel.apply {
             newsList.observe(this@LatestNewsFragment, Observer {
                 if(rvAdapter == null)  LogUtils.e("rvAdapter 为空")
-//                rvAdapter?.data = it.toMutableList()
                 rvAdapter?.addData(it.toMutableList())
                 Log.e(tag,it.toMutableList().toString())
                 rvAdapter?.notifyDataSetChanged()
