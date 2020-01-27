@@ -60,6 +60,7 @@ class LatestNewsFragment : BaseFragment() {
         rvAdapter = LatestNewsAdapter(mutableListOf())
         rvNews?.layoutManager = LinearLayoutManager(this.context)
         rvNews?.adapter = rvAdapter
+        rvAdapter?.animationEnable = true
         rvAdapter?.setOnItemClickListener { adapter, view, position ->
             openWebViewActivity(rvAdapter?.getItem(position)?.sourceUrl ?: "")
         }

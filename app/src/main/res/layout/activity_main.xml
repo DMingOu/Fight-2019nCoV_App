@@ -17,7 +17,7 @@
     <com.chaychan.library.BottomBarLayout
         android:id="@+id/bbl_main"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:background="@color/tab_background"
@@ -33,20 +33,20 @@
             app:textColorNormal="@color/tab_normal_color"
             app:textColorSelected="@color/tab_selected_color"
             app:itemTextSize="12sp"
-            app:itemMarginTop="3dp"
+            app:itemMarginTop="5dp"
             />
 
         <com.chaychan.library.BottomBarItem
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            app:iconNormal="@drawable/tab_area_normal_32"
-            app:iconSelected="@drawable/tab_area_selected_32"
+            app:iconNormal="@mipmap/tab_area_normal_32"
+            app:iconSelected="@mipmap/tab_area_selected_32"
             app:itemText="@string/area"
             app:textColorNormal="@color/tab_normal_color"
             app:textColorSelected="@color/tab_selected_color"
             app:itemTextSize="12sp"
-            app:itemMarginTop="3dp"
+            app:itemMarginTop="4dp"
             />
 
 

@@ -7,7 +7,7 @@ import com.odm.fight_2019ncov.model.entity.GetAreaStat
 
 
 /**
- * @description: 地区情况列表 适配器
+ * @description: 地区情况树状列表 总适配器
  * @author: ODM
  * @date: 2020/1/27
  */

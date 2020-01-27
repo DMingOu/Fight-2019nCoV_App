@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseFragment
 import org.koin.android.ext.android.inject
@@ -48,6 +49,8 @@ class SituationFragment : BaseFragment() {
         rvAdapter = AreaSituationAdapter()
         rvAreaSet?.layoutManager = LinearLayoutManager(requireContext())
         rvAreaSet?.adapter = rvAdapter
+        rvAdapter?.animationEnable = true
+//        rvAdapter?.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInBottom)
     }
 
 
