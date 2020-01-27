@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:background="@drawable/shape_item_situation_province">
+
+
+    <ImageView
+        android:id = "@+id/itemView_color_province_situation"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_centerVertical="true"
+        tools:background="@color/orangered"/>
+
+    <TextView
+        android:id = "@+id/tv_provinceName_item_province_situation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/itemView_color_province_situation"
+        tools:text="湖北"
+        android:textSize="20sp"
+        android:textColor="@color/dodgerblue"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        />
+
+    <TextView
+        android:id = "@+id/tv_provinceStatement_item_province_situation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/tv_provinceName_item_province_situation"
+        android:layout_centerVertical="true"
+        tools:text="确诊20例，疑似30例，死亡5例"
+        android:textColor="@color/black"
+        android:layout_marginStart="20dp"
+
+        />
+
+    <ImageView
+        android:id = "@+id/iv_switch_expand_item_province_situation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="15dp"
+        tools:src = "@drawable/arrow_normal_16"
+        />
+
+</RelativeLayout>
