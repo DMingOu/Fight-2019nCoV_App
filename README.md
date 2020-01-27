@@ -14,6 +14,6 @@
 
 # App效果图（目前）
 
-| ![home.png](https://ae01.alicdn.com/kf/H6feb268eb24f45d291c77d8e85cbca120.jpg) | ![areaSituation.png](https://ae01.alicdn.com/kf/H1ea7877392a044c1b549403f4e7bf39bW.jpg) |
+| ![home.png](https://ae01.alicdn.com/kf/H6feb268eb24f45d291c77d8e85cbca120.jpg) | ![areaSituation.png](https://img01.sogoucdn.com/app/a/100520146/EC214E124F4F6B3E8F858D63B2DE2AAE) |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |                           实时消息                           |                           地区情况                           |
