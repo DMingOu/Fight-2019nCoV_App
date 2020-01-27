@@ -1,17 +1,20 @@
 package com.odm.fight_2019ncov.ui.LatestNews
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.LogUtils
+import com.github.ybq.android.spinkit.SpinKitView
 import com.odm.fight_2019ncov.Constants
 import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseFragment
@@ -29,6 +32,8 @@ class LatestNewsFragment : BaseFragment() {
     var ivCheer : ImageView ?= null
     var rvNews : RecyclerView ?= null
     var rvAdapter : LatestNewsAdapter ?= null
+    var loading : SpinKitView ?= null
+
 
     //依赖注入获取ViewModel实例
      val viewModel: LatestNewsViewModel by inject()
@@ -54,6 +59,10 @@ class LatestNewsFragment : BaseFragment() {
      * 不可以在onCreateView中调用否则导致异常 E/RecyclerView: No adapter attached; skipping layout
      */
     override fun initViews() {
+        loading = activity?.findViewById(R.id.spin_kit)
+        if(loading?.visibility != View.VISIBLE) {
+            loading?.visibility = View.VISIBLE
+        }
         ivCheer = activity?.findViewById(R.id.iv_banner)
         rvNews = activity?.findViewById(R.id.rv_latest_news)
         //初始化 RecyclerView 的适配器
@@ -76,8 +85,11 @@ class LatestNewsFragment : BaseFragment() {
         viewModel.apply {
             newsList.observe(this@LatestNewsFragment, Observer {
                 if(rvAdapter == null)  return@Observer
-                rvAdapter?.addData(it.toMutableList())
-                rvAdapter?.notifyDataSetChanged()
+                rvAdapter?.setNewData(it.toMutableList())
+//                rvAdapter?.notifyDataSetChanged()
+
+                loading?.animation?.cancel()
+                loading?.visibility = View.INVISIBLE
             })
         }
     }

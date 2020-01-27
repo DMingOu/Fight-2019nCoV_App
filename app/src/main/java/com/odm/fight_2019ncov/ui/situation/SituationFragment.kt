@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.github.ybq.android.spinkit.SpinKitView
 import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseFragment
 import org.koin.android.ext.android.inject
@@ -21,7 +22,7 @@ class SituationFragment : BaseFragment() {
 
     var rvAreaSet : RecyclerView ?= null
     var rvAdapter  : AreaSituationAdapter ?= null
-
+    var loading : SpinKitView?= null
     private val viewModel : SituationViewModel by  inject()
 
     override val layoutId: Int
@@ -45,6 +46,11 @@ class SituationFragment : BaseFragment() {
     }
 
     override fun initViews() {
+        loading = activity?.findViewById(R.id.loading_situation)
+        if(loading?.visibility != View.VISIBLE) {
+            loading?.visibility = View.VISIBLE
+        }
+
         rvAreaSet = activity?.findViewById(R.id.rv_situation_area)
         rvAdapter = AreaSituationAdapter()
         rvAreaSet?.layoutManager = LinearLayoutManager(requireContext())
@@ -61,7 +67,8 @@ class SituationFragment : BaseFragment() {
             areaSituation.observe(this@SituationFragment, Observer {
                 if(rvAdapter == null)  return@Observer
                 rvAdapter?.setNewData(it.toMutableList())
-                rvAdapter?.notifyDataSetChanged()
+//                rvAdapter?.notifyDataSetChanged()
+                loading?.visibility = View.GONE
             })
         }
     }

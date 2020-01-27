@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull
 
 
 /**
- * @description: 城市情况列表适配器
+ * @description: 城市情况列表适配器 树状子适配器第二层
  * @author: ODM
  * @date: 2020/1/27
  */

@@ -19,10 +19,16 @@ class LatestNewsAdapter (data : MutableList<LatestNews> ?)
             Logger.d("item  null")
             return
         }
+        var summary : String ?= null
+        summary = if(item.summary.length >= 200) {
+            item.summary.substring(0,200)+ "......"
+        } else {
+            item.summary
+        }
         helper.setText(R.id.tv_title_item_news , item.title)
         helper.setText(R.id.tv_infoSource_item_news,item.infoSource)
         helper.setText(R.id.tv_provinceName_item_news ,item.provinceName)
-        helper.setText(R.id.tv_summary_item_news ,item.summary)
+        helper.setText(R.id.tv_summary_item_news ,summary)
         helper.setText(R.id.tv_pubDateStr_item_news ,item.pubDateStr)
     }
 }

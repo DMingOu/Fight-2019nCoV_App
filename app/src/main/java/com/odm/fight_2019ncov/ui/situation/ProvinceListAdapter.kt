@@ -24,7 +24,7 @@ import com.odm.fight_2019ncov.model.entity.GetAreaStat
 //import com.chad.baserecyclerviewadapterhelper.entity.node.tree.FirstNode
 
 /**
- * @description: 省列表 第一层  适配器
+ * @description: 省列表 树状子适配器第二层
  * @author: ODM
  * @date: 2020/1/27
  */

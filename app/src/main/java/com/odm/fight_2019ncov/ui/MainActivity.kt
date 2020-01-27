@@ -23,8 +23,10 @@ class MainActivity : BaseActivity() {
     override fun initViews() {
         bottomNavigation = findViewById(R.id.bbl_main)
         bottomNavigation?.setOnItemSelectedListener { bottomBarItem, i, i2 ->
-            //切换页面
-            setFragmentByPosition(i2)
+            if (viewModel.lastFragmentIndex != i2) {
+                //切换页面
+                setFragmentByPosition(i2)
+            }
         }
     }
 
