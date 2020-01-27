@@ -1,9 +1,10 @@
 package com.odm.fight_2019ncov.di
 
-import com.odm.fight_2019ncov.MainViewModel
+import com.odm.fight_2019ncov.ui.MainViewModel
 import com.odm.fight_2019ncov.ui.LatestNews.LatestNewsRepository
 import com.odm.fight_2019ncov.ui.LatestNews.LatestNewsViewModel
-import org.koin.android.experimental.dsl.viewModel
+import com.odm.fight_2019ncov.ui.situation.SituationRepository
+import com.odm.fight_2019ncov.ui.situation.SituationViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -17,10 +18,12 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { LatestNewsViewModel(get()) }
     viewModel { MainViewModel() }
+    viewModel { SituationViewModel(get())  }
 }
 
 val repositoryModule = module {
     single { LatestNewsRepository() }
+    single { SituationRepository() }
 }
 
 val AppModule = listOf(viewModelModule, repositoryModule)

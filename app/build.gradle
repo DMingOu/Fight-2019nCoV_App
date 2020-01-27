@@ -79,5 +79,6 @@ dependencies {
     //工具类集合
     implementation 'com.blankj:utilcodex:1.26.0'
 
+    //shape标签
     implementation 'com.noober.background:core:1.6.3'
 }

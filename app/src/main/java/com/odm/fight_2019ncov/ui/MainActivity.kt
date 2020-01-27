@@ -1,12 +1,10 @@
-package com.odm.fight_2019ncov
+package com.odm.fight_2019ncov.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.blankj.utilcode.util.LogUtils
 import com.chaychan.library.BottomBarLayout
+import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseActivity
-import com.orhanobut.logger.Logger
 import org.koin.android.ext.android.inject
 
 class MainActivity : BaseActivity() {

@@ -26,7 +26,7 @@ open class BaseRepository {
             request()
         } catch (exception: Exception) {
             // 当调用API抛出一个异常,,将它转换为一个IOException
-            LogUtils.e(exception.message.toString())
+            exception.printStackTrace()
             ApiResult.Error(
                 IOException(
                     errorMessage,

@@ -1,7 +1,15 @@
 package com.odm.fight_2019ncov.ui.situation
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseFragment
+import org.koin.android.ext.android.inject
 
 /**
  * @description: 情况 页面层
@@ -10,13 +18,51 @@ import com.odm.fight_2019ncov.base.BaseFragment
  */
 class SituationFragment : BaseFragment() {
 
+    var rvAreaSet : RecyclerView ?= null
+    var rvAdapter  : AreaSituationAdapter ?= null
 
-
-    override fun initViews() {
-
-    }
+    private val viewModel : SituationViewModel by  inject()
 
     override val layoutId: Int
         get() = R.layout.fragment_situation
 
-}
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_situation, container, false)
+        viewModel.getAllInfoRaw()
+        return view
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        initViews()
+        initObservableLiveData()
+    }
+
+    override fun initViews() {
+        rvAreaSet = activity?.findViewById(R.id.rv_situation_area)
+        rvAdapter = AreaSituationAdapter()
+        rvAreaSet?.layoutManager = LinearLayoutManager(requireContext())
+        rvAreaSet?.adapter = rvAdapter
+    }
+
+
+
+    private fun initObservableLiveData() {
+
+        viewModel.apply {
+            areaSituation.observe(this@SituationFragment, Observer {
+                if(rvAdapter == null)  return@Observer
+                rvAdapter?.setNewData(it.toMutableList())
+                rvAdapter?.notifyDataSetChanged()
+            })
+        }
+    }
+
+
+    }
+

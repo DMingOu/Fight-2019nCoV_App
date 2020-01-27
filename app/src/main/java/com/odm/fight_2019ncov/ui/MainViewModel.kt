@@ -1,4 +1,4 @@
-package com.odm.fight_2019ncov
+package com.odm.fight_2019ncov.ui
 
 import androidx.fragment.app.Fragment
 import com.chad.library.adapter.base.viewholder.BaseViewHolder

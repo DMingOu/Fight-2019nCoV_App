@@ -55,9 +55,6 @@ class LatestNewsViewModel (private val repository : LatestNewsRepository) : Base
                 val result = repository.suspendGetLatestNewsRawData()
                 val reader: Reader = result.body()!!.charStream()
                 if(result.raw().isSuccessful) {
-                    val str = result.body()
-//                    Log.e(tag , str.toString())
-//                    LogUtils.d(str)
                     val listType: Type =  object : TypeToken<List<LatestNews>>() {}.type
                     val list: List<LatestNews> = Gson().fromJson(reader, listType)
                     _newsList.value  =  list
@@ -65,31 +62,6 @@ class LatestNewsViewModel (private val repository : LatestNewsRepository) : Base
                     LogUtils.e("请求失败")
                 }
             }
-
-/*                val call = NetRetrofitClient.service.getLatestNewsRaw()
-                Log.e(tag , "发出请求")
-                call.enqueue(object : retrofit2.Callback<ResponseBody> {
-                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        t.printStackTrace()
-                    }
-
-                    override fun onResponse(
-                        call: Call<ResponseBody>,
-                        response: retrofit2.Response<ResponseBody>
-                    ) {
-                        if(response.isSuccessful) {
-                            Log.e(tag, "Response成功返回")
-                            viewModelScope.launch {
-                                saveDownLoadFile(response.body() ,url)
-                            }
-                            Log.e(tag, "body get!！！")
-                        } else {
-                            Log.e(tag ,"response 返回出错")
-                        }
-                    }
-                })*/
-
-
     }
 
 }

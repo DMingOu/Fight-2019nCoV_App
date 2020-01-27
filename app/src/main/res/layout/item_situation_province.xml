@@ -6,13 +6,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginStart="15dp"
     android:layout_marginEnd="15dp"
-    android:background="@drawable/shape_item_situation_province">
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/shape_item_situation_province"
+    >
 
 
     <ImageView
         android:id = "@+id/itemView_color_province_situation"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:layout_centerVertical="true"
         tools:background="@color/orangered"/>
 
@@ -22,10 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/itemView_color_province_situation"
         tools:text="湖北"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textColor="@color/dodgerblue"
         android:layout_centerVertical="true"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         />
 
     <TextView
@@ -36,7 +38,7 @@
         android:layout_centerVertical="true"
         tools:text="确诊20例，疑似30例，死亡5例"
         android:textColor="@color/black"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="8dp"
 
         />
 
@@ -46,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="5dp"
         tools:src = "@drawable/arrow_normal_16"
         />
 

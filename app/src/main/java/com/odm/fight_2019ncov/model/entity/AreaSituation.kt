@@ -1,4 +1,6 @@
 package com.odm.fight_2019ncov.model.entity
+import com.chad.library.adapter.base.entity.node.BaseExpandNode
+import com.chad.library.adapter.base.entity.node.BaseNode
 import com.google.gson.annotations.SerializedName
 
 
@@ -37,4 +39,7 @@ data class City(
     val deadCount: Int,
     @SerializedName("suspectedCount")
     val suspectedCount: Int
-)
+) : BaseExpandNode() {
+    override val childNode: MutableList<BaseNode>?
+        get() = null
+}

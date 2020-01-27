@@ -6,6 +6,7 @@ package com.odm.fight_2019ncov.model.net
  * @date: 2020/1/26
  */
 
+import com.odm.fight_2019ncov.model.entity.AllSituation
 import com.odm.fight_2019ncov.model.entity.AreaSituation
 import com.odm.fight_2019ncov.model.entity.LatestNews
 import com.odm.fight_2019ncov.model.entity.OverallSituation
@@ -47,6 +48,12 @@ interface ApiService {
      */
     @GET("/data/getStatisticsService")
     suspend fun getOverallSituation() : ApiResponse<OverallSituation>
+
+    /**
+     * 获取全部信息
+     */
+    @GET("/data/all")
+    suspend fun getAllInformation() : ApiResponse<ApiResponse<AllSituation>  >
 
 
     @Streaming
