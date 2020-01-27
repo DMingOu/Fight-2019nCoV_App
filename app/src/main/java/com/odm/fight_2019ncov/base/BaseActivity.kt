@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
  * @date: 2020/1/26
  */
 abstract class BaseActivity : AppCompatActivity(){
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //锁定旋转屏幕--只能竖屏使用

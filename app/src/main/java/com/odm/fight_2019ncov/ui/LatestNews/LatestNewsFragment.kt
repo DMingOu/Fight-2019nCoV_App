@@ -1,5 +1,6 @@
 package com.odm.fight_2019ncov.ui.LatestNews
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,8 +12,10 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.LogUtils
+import com.odm.fight_2019ncov.Constants
 import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseFragment
+import com.odm.fight_2019ncov.ui.WebContainerActivity
 import com.orhanobut.logger.Logger
 import org.koin.android.ext.android.inject
 
@@ -54,12 +57,11 @@ class LatestNewsFragment : BaseFragment() {
         ivCheer = activity?.findViewById(R.id.iv_banner)
         rvNews = activity?.findViewById(R.id.rv_latest_news)
         //初始化 RecyclerView 的适配器
-        LogUtils.e("初始化Adapter")
         rvAdapter = LatestNewsAdapter(mutableListOf())
         rvNews?.layoutManager = LinearLayoutManager(this.context)
         rvNews?.adapter = rvAdapter
         rvAdapter?.setOnItemClickListener { adapter, view, position ->
-            //Todo 启动WebView网页
+            openWebViewActivity(rvAdapter?.getItem(position)?.sourceUrl ?: "")
         }
     }
 
@@ -68,20 +70,22 @@ class LatestNewsFragment : BaseFragment() {
 
 
     private fun initObservableLiveData() {
-        //对ViewModel的数据进行观察，方式1
-//        viewModel.bannerList.observe(this , Observer {
-//            tvData?.text = it?.get(1)?.url
-//        } )
+
         //对ViewModel的数据进行观察，方式2
         viewModel.apply {
             newsList.observe(this@LatestNewsFragment, Observer {
-                if(rvAdapter == null)  LogUtils.e("rvAdapter 为空")
+                if(rvAdapter == null)  return@Observer
                 rvAdapter?.addData(it.toMutableList())
-                Log.e(tag,it.toMutableList().toString())
                 rvAdapter?.notifyDataSetChanged()
-                LogUtils.e("刷新数据")
             })
         }
+    }
+
+    private fun openWebViewActivity( url : String) {
+        val intent = Intent()
+        intent.putExtra(Constants.WEB_URL , url)
+        intent.setClass(requireContext() , WebContainerActivity::class.java)
+        startActivity(intent)
     }
 
 

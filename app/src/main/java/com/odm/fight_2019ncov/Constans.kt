@@ -8,4 +8,5 @@ package com.odm.fight_2019ncov
 
 object Constants {
     val DOWNLOAD_PATH = App.CONTEXT.getExternalFilesDir(null)?.absolutePath+ "/Download"
+    const val WEB_URL = "WEB_URL"
 }

@@ -3,6 +3,7 @@ package com.odm.fight_2019ncov
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.blankj.utilcode.util.LogUtils
 import com.chaychan.library.BottomBarLayout
 import com.odm.fight_2019ncov.base.BaseActivity
 import com.orhanobut.logger.Logger
@@ -17,11 +18,16 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initViews()
+        setFragmentByPosition(0)
     }
 
     override fun initViews() {
         bottomNavigation = findViewById(R.id.bbl_main)
-        setFragmentByPosition(0)
+        bottomNavigation?.setOnItemSelectedListener { bottomBarItem, i, i2 ->
+            //切换页面
+            setFragmentByPosition(i2)
+        }
     }
 
     override val layoutId: Int
@@ -49,7 +55,6 @@ class MainActivity : BaseActivity() {
         //立刻执行操作
         supportFragmentManager.executePendingTransactions()
         viewModel.lastFragmentIndex = position
-
 
     }
 

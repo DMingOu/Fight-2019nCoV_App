@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.odm.fight_2019ncov.base.BaseViewModel
 import com.odm.fight_2019ncov.ui.LatestNews.LatestNewsFragment
+import com.odm.fight_2019ncov.ui.situation.SituationFragment
 
 /**
  * @description: 主页面ViewModel
@@ -32,6 +33,7 @@ class MainViewModel : BaseViewModel() {
     fun initFragmentData() {
         mFragments = ArrayList()
         mFragments?.add(LatestNewsFragment())
+        mFragments?.add(SituationFragment())
 
     }
 }
