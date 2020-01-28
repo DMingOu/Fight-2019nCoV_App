@@ -93,7 +93,7 @@ class LatestNewsFragment : BaseFragment() {
         rvNews?.addOnScrollListener(onScrollListener)
 
         rvNews?.adapter = rvAdapter
-//        rvAdapter?.animationEnable = true
+        rvAdapter?.animationEnable = true
         rvAdapter?.setOnItemClickListener { adapter, view, position ->
             openWebViewActivity(rvAdapter?.getItem(position)?.sourceUrl ?: "")
         }
@@ -121,8 +121,6 @@ class LatestNewsFragment : BaseFragment() {
             newsList.observe(this@LatestNewsFragment, Observer {
                 if(rvAdapter == null)  return@Observer
                 rvAdapter?.setNewData(it.toMutableList())
-//                rvAdapter?.notifyDataSetChanged()
-
                 loading?.animation?.cancel()
                 loading?.visibility = View.INVISIBLE
             })
