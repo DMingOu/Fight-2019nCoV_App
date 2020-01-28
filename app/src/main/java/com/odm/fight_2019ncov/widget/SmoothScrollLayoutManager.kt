@@ -9,7 +9,7 @@ import com.blankj.utilcode.util.LogUtils
 
 
 /**
- * @description: 滚动列表自定义布局管理器
+ * @description: 滚动列表自定义布局管理器(自定义SmoothScroll 方法)
  * @author: ODM
  * @date: 2020/1/28
  */

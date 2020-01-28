@@ -1,10 +1,11 @@
-package com.odm.fight_2019ncov.ui
+package com.odm.fight_2019ncov.ui.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.chaychan.library.BottomBarLayout
 import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseActivity
+import com.odm.fight_2019ncov.ui.main.MainViewModel
 import org.koin.android.ext.android.inject
 
 class MainActivity : BaseActivity() {
@@ -47,7 +48,6 @@ class MainActivity : BaseActivity() {
             supportFragmentManager.beginTransaction()
                 .remove(targetFragment)
                 .commitNow()
-
         }
         ft.replace(R.id.frl_container, targetFragment)
             .show(targetFragment)
@@ -58,12 +58,11 @@ class MainActivity : BaseActivity() {
 
     }
 
-
-
-
-
-
-
-
-
+    /**
+     * 处理返回键事件 ： 直接退出App
+     */
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finish()
+    }
 }

@@ -16,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.odm.fight_2019ncov.Constants
 import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseFragment
+import com.odm.fight_2019ncov.ui.AgentWebActivity
 import com.odm.fight_2019ncov.ui.WebContainerActivity
 import com.odm.fight_2019ncov.widget.SmoothScrollLayoutManager
 import com.odm.fight_2019ncov.widget.ViewAnimatorHelper
@@ -59,6 +60,19 @@ class LatestNewsFragment : BaseFragment() {
         initObservableLiveData()
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewAnimatorHelper.bindView(btnScollTop)
+        if(btnScollTop?.visibility != View.VISIBLE) {
+            btnScollTop?.visibility = View.VISIBLE
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewAnimatorHelper.unBindView()
+    }
+
     /**
      * 初始化控件
      * 不可以在onCreateView中调用否则导致异常 E/RecyclerView: No adapter attached; skipping layout
@@ -89,13 +103,11 @@ class LatestNewsFragment : BaseFragment() {
 
 
         btnScollTop = activity?.findViewById(R.id.fbtn_scroll_top)
-        btnScollTop?.visibility == View.VISIBLE
+        btnScollTop?.visibility = View.VISIBLE
         btnScollTop?.setOnClickListener {
             //悬浮按钮点击事件 ： 列表平滑回到顶部
             rvNews?.smoothScrollToPosition(0)
-//            rvNews?.scrollTo(0, 0)
         }
-        viewAnimatorHelper.bindView(btnScollTop)
     }
 
     override val layoutId: Int
@@ -120,17 +132,20 @@ class LatestNewsFragment : BaseFragment() {
     private fun openWebViewActivity( url : String) {
         val intent = Intent()
         intent.putExtra(Constants.WEB_URL , url)
-        intent.setClass(requireContext() , WebContainerActivity::class.java)
+        intent.setClass(requireContext() , AgentWebActivity::class.java)
         startActivity(intent)
     }
 
     private val onScrollListener: RecyclerView.OnScrollListener =
         object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy > 0 && btnScollTop?.visibility != View.INVISIBLE && !viewAnimatorHelper.isAnimating()) {
-                    viewAnimatorHelper.hideFloatActionButton()
+                if(dy > 100 || dy < -100) println("dy : ${dy}}")
+                if (dy > 0 && btnScollTop?.visibility == View.VISIBLE && !viewAnimatorHelper.isAnimating()) {
+                    //向下滑动，隐藏
+                    viewAnimatorHelper.hideAndScale()
                 } else if (dy < 0 && btnScollTop?.visibility != View.VISIBLE) {
-                    viewAnimatorHelper.showFloatActionButton()
+                    //向上滑动，显现
+                    viewAnimatorHelper.showAndScale()
                 }
             }
         }

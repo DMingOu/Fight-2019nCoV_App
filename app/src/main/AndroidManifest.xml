@@ -12,12 +12,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/MyAppTheme">
-        <activity android:name=".ui.WebContainerActivity">
-
+        android:theme="@style/MyAppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.AgentWebActivity"
+            android:hardwareAccelerated="true"
+            android:configChanges="orientation|screenSize">
         </activity>
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.WebContainerActivity"></activity>
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

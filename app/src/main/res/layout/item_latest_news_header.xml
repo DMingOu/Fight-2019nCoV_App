@@ -10,6 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:background="@drawable/banner"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         />
 
 </LinearLayout>

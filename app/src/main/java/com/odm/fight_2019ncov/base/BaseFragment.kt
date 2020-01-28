@@ -24,6 +24,10 @@ abstract class BaseFragment : Fragment(){
      */
 //     fun initViewDataBinding(inflater: LayoutInflater, container: ViewGroup?)
 
+
+
+//    abstract val isBackToFinish : Boolean
+
     abstract fun initViews()
     /**
      * 返回页面布局的ID

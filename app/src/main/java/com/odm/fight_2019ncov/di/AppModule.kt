@@ -1,6 +1,6 @@
 package com.odm.fight_2019ncov.di
 
-import com.odm.fight_2019ncov.ui.MainViewModel
+import com.odm.fight_2019ncov.ui.main.MainViewModel
 import com.odm.fight_2019ncov.ui.LatestNews.LatestNewsRepository
 import com.odm.fight_2019ncov.ui.LatestNews.LatestNewsViewModel
 import com.odm.fight_2019ncov.ui.situation.SituationRepository
