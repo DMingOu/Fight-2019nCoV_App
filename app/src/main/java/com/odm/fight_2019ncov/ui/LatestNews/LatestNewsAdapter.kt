@@ -20,8 +20,8 @@ class LatestNewsAdapter (data : MutableList<LatestNews> ?)
             return
         }
         var summary : String ?= null
-        summary = if(item.summary.length >= 200) {
-            item.summary.substring(0,200)+ "......"
+        summary = if(item.summary.length >= 150) {
+            item.summary.substring(0,150)+ "......"
         } else {
             item.summary
         }
