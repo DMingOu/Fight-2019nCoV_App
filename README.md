@@ -14,6 +14,9 @@
 
 # App效果图（目前）
 
-| ![home.png](https://ae01.alicdn.com/kf/H6feb268eb24f45d291c77d8e85cbca120.jpg) | ![areaSituation.png](https://img01.sogoucdn.com/app/a/100520146/EC214E124F4F6B3E8F858D63B2DE2AAE) |
+| ![home.png](https://ae01.alicdn.com/kf/H6feb268eb24f45d291c77d8e85cbca120.jpg) | ![areaSituation.png](https://s2.ax1x.com/2020/01/30/11GQns.png) |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |                           实时消息                           |                           地区情况                           |
+
+## Demo 下载
+[Demo下载](https://github.com/DMingOu/Fight-2019nCoV_App/blob/master/app/release/app-release.apk?raw=true)
