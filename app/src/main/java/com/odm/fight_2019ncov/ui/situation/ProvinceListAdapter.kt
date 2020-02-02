@@ -42,14 +42,14 @@ class ProvinceListAdapter : BaseNodeProvider() {
     ) {
         val entity: GetAreaStat ? = data as GetAreaStat?
         helper.setText(R.id.tv_provinceName_item_province_situation, entity?.provinceName?.subSequence(0,2))
-        helper.setText(R.id.tv_provinceStatement_item_province_situation, "确诊${entity?.confirmedCount}例 " +
-                "疑似${entity?.suspectedCount}例 治愈${entity?.curedCount}例 死亡${entity?.deadCount}例")
+        helper.setText(R.id.tv_provinceStatement_item_province_situation, "确诊${entity?.confirmedCount}  " +
+                "疑似${entity?.suspectedCount}  治愈${entity?.curedCount}  死亡${entity?.deadCount}")
         helper.setImageResource(R.id.iv_switch_expand_item_province_situation, R.drawable.arrow_selected_16)
         when {
-            entity?.confirmedCount!! >= 100 -> {
+            entity?.confirmedCount!! >= 1000 -> {
                 helper.setImageDrawable(R.id.itemView_color_province_situation , App.CONTEXT.getDrawable(R.color.red))
             }
-            entity?.confirmedCount!! >= 10 -> {
+            entity?.confirmedCount!! >= 100 -> {
                 helper.setImageDrawable(R.id.itemView_color_province_situation , App.CONTEXT.getDrawable(R.color.darkorange))
             }
             else -> {

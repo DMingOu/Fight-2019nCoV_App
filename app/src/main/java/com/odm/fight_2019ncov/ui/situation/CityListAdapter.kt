@@ -25,7 +25,7 @@ class CityListAdapter : BaseNodeProvider() {
         val entity: City ? = data as City?
         //赋值操作
         helper.setText(R.id.tv_cityName_item_situation_city , entity?.cityName)
-        helper.setText(R.id.tv_citySituation_item_situation_city ,"确诊${entity?.confirmedCount}例 " +
-                "疑似${entity?.suspectedCount}例 治愈${entity?.curedCount}例 死亡${entity?.deadCount}例")
+        helper.setText(R.id.tv_citySituation_item_situation_city ,"确诊${entity?.confirmedCount}例  " +
+                "疑似${entity?.suspectedCount}例  治愈${entity?.curedCount}例  死亡${entity?.deadCount}例")
     }
 }
