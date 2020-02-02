@@ -14,7 +14,7 @@
 
 # App效果图（目前）
 
-| ![home.png](https://s2.ax1x.com/2020/01/30/11Gqgg.png) | ![areaSituation.png](https://s2.ax1x.com/2020/01/30/11GQns.png) |
+| ![home.png](https://s2.ax1x.com/2020/02/02/1tktFe.png) | ![areaSituation.png](https://s2.ax1x.com/2020/02/02/1tkNJH.png) |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |                           实时消息                           |                           地区情况                           |
 
