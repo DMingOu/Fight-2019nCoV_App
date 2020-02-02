@@ -92,4 +92,7 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //沉浸式状态栏
+    implementation 'com.github.Ye-Miao:StatusBarUtil:1.7.5'
 }

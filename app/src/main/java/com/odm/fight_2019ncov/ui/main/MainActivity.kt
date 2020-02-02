@@ -3,6 +3,7 @@ package com.odm.fight_2019ncov.ui.main
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.chaychan.library.BottomBarLayout
+import com.leaf.library.StatusBarUtil
 import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseActivity
 import com.odm.fight_2019ncov.ui.main.MainViewModel
@@ -16,6 +17,8 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //设置沉浸式状态栏
+        StatusBarUtil.setColor(this,resources.getColor(R.color.mediumvioletred))
         setContentView(R.layout.activity_main)
         initViews()
         setFragmentByPosition(0)
