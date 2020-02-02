@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="395dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/iv_map_situation_country"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:fitsSystemWindows="false"
+            tools:src="@drawable/banner2"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/tv_number_item_situation_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_map_situation_country"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            tools:text=" 全国：\n      XXXXXXXXXXXXXXXXXXXXXXXXXX"/>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            android:layout_below="@id/tv_number_item_situation_country"
+            />
+        <TextView
+            android:id = "@+id/tv_passWay_item_situation_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_number_item_situation_country"
+            android:textColor="@color/black"
+
+            tools:text = " 传播途径：\n      经呼吸道飞沫传播，亦可通过接触传播，存在粪-口传播可能性"/>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            android:layout_below="@id/tv_passWay_item_situation_country"
+            />
+        <TextView
+            android:id="@+id/tv_time_item_situation_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_passWay_item_situation_country"
+            android:textColor="@color/black"
+            tools:text = " 更新时间：\n      XXXXXXXXXXXXXXXXXX"/>
+
+
+
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>

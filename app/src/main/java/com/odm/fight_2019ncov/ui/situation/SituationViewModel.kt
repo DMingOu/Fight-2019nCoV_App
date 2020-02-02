@@ -6,10 +6,7 @@ import com.blankj.utilcode.util.LogUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.odm.fight_2019ncov.base.BaseViewModel
-import com.odm.fight_2019ncov.model.entity.AllSituation
-import com.odm.fight_2019ncov.model.entity.AreaSituation
-import com.odm.fight_2019ncov.model.entity.GetAreaStat
-import com.odm.fight_2019ncov.model.entity.LatestNews
+import com.odm.fight_2019ncov.model.entity.*
 import com.odm.fight_2019ncov.model.net.ApiResult
 import java.io.Reader
 import java.lang.reflect.Type
@@ -26,9 +23,12 @@ class SituationViewModel (private val repository: SituationRepository) : BaseVie
     private val _areaSituationList  =  MutableLiveData<List<GetAreaStat>>()
     //供外部调用的LiveData
     val areaSituation : LiveData<List<GetAreaStat>> = _areaSituationList
+    //整体情况
+    private val _staticSituation = MutableLiveData<GetStatisticsService>()
+    val staticSituation : LiveData<GetStatisticsService> = _staticSituation
 
     init {
-//        getSituationAll()
+        getAllInfoRaw()
     }
 
 
@@ -55,10 +55,12 @@ class SituationViewModel (private val repository: SituationRepository) : BaseVie
                 val objType: Type =  object : TypeToken<AllSituation>() {}.type
                 val allInfoObject : AllSituation = Gson().fromJson(reader, objType)
                 _areaSituationList.value = allInfoObject.getAreaStat
+                _staticSituation.value = allInfoObject.getStatisticsService
             } else {
                 LogUtils.e("请求失败")
             }
         }
     }
+
 
 }

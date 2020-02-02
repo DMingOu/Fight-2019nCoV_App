@@ -221,7 +221,16 @@ data class GetStatisticsService(
     @SerializedName("summary")
     val summary: String,
     @SerializedName("virus")
-    val virus: String
+    val virus: String,
+    //数字类
+    @SerializedName("curedCount")
+    val curedCount: Int ,
+    @SerializedName("deadCount")
+    val deadCount: Int,
+    @SerializedName("confirmedCount")
+    val confirmedCount: Int,
+    @SerializedName("suspectedCount")
+    val suspectedCount: Int
 )
 
 data class GetTimelineService(

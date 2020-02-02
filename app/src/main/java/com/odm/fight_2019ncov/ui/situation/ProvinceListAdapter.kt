@@ -13,15 +13,6 @@ import com.odm.fight_2019ncov.App
 import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.model.entity.GetAreaStat
 
-//import com.chad.baserecyclerviewadapterhelper.R
-//import com.chad.baserecyclerviewadapterhelper.adapter.node.tree.NodeTreeAdapter
-//import com.chad.baserecyclerviewadapterhelper.entity.node.tree.FirstNode
-//import com.chad.library.adapter.base.entity.node.BaseNode
-//import com.chad.library.adapter.base.provider.BaseNodeProvider
-//import com.chad.library.adapter.base.viewholder.BaseViewHolder
-//import com.chad.baserecyclerviewadapterhelper.R
-//import com.chad.baserecyclerviewadapterhelper.adapter.node.tree.NodeTreeAdapter
-//import com.chad.baserecyclerviewadapterhelper.entity.node.tree.FirstNode
 
 /**
  * @description: 省列表 树状子适配器第二层
@@ -42,18 +33,24 @@ class ProvinceListAdapter : BaseNodeProvider() {
     ) {
         val entity: GetAreaStat ? = data as GetAreaStat?
         helper.setText(R.id.tv_provinceName_item_province_situation, entity?.provinceName?.subSequence(0,2))
-        helper.setText(R.id.tv_provinceStatement_item_province_situation, "确诊${entity?.confirmedCount}  " +
-                "疑似${entity?.suspectedCount}  治愈${entity?.curedCount}  死亡${entity?.deadCount}")
+        helper.setText(R.id.tv_provinceStatement_item_province_situation, "确诊 ${entity?.confirmedCount}  " +
+                "疑似 ${entity?.suspectedCount}  治愈 ${entity?.curedCount}  死亡 ${entity?.deadCount}")
         helper.setImageResource(R.id.iv_switch_expand_item_province_situation, R.drawable.arrow_selected_16)
         when {
             entity?.confirmedCount!! >= 1000 -> {
-                helper.setImageDrawable(R.id.itemView_color_province_situation , App.CONTEXT.getDrawable(R.color.red))
+                helper.setImageDrawable(R.id.itemView_color_province_situation , App.CONTEXT.getDrawable(R.color.count_more_1000))
+            }
+            entity?.confirmedCount!! >= 500 -> {
+                helper.setImageDrawable(R.id.itemView_color_province_situation , App.CONTEXT.getDrawable(R.color.count_more_500))
             }
             entity?.confirmedCount!! >= 100 -> {
-                helper.setImageDrawable(R.id.itemView_color_province_situation , App.CONTEXT.getDrawable(R.color.darkorange))
+                helper.setImageDrawable(R.id.itemView_color_province_situation , App.CONTEXT.getDrawable(R.color.count_more_100))
+            }
+            entity?.confirmedCount!! >= 10 -> {
+                helper.setImageDrawable(R.id.itemView_color_province_situation , App.CONTEXT.getDrawable(R.color.count_more_10))
             }
             else -> {
-                helper.setImageDrawable(R.id.itemView_color_province_situation , App.CONTEXT.getDrawable(R.color.lightsalmon))
+                helper.setImageDrawable(R.id.itemView_color_province_situation , App.CONTEXT.getDrawable(R.color.count_more_0))
             }
         }
         setArrowSpin(helper, data, false)

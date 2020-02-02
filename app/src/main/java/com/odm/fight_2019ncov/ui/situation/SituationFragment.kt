@@ -1,12 +1,17 @@
 package com.odm.fight_2019ncov.ui.situation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.blankj.utilcode.util.TimeUtils
+import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.github.ybq.android.spinkit.SpinKitView
 import com.odm.fight_2019ncov.R
@@ -35,7 +40,7 @@ class SituationFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_situation, container, false)
-        viewModel.getAllInfoRaw()
+//        viewModel.getAllInfoRaw()
         return view
     }
 
@@ -50,7 +55,6 @@ class SituationFragment : BaseFragment() {
         if(loading?.visibility != View.VISIBLE) {
             loading?.visibility = View.VISIBLE
         }
-
         rvAreaSet = activity?.findViewById(R.id.rv_situation_area)
         rvAdapter = AreaSituationAdapter()
         rvAreaSet?.layoutManager = LinearLayoutManager(requireContext())
@@ -61,14 +65,35 @@ class SituationFragment : BaseFragment() {
 
 
 
+    @SuppressLint("SetTextI18n")
     private fun initObservableLiveData() {
 
+        viewModel.apply {
+            staticSituation.observe(this@SituationFragment , Observer {
+                if(rvAdapter == null)  return@Observer
+                //全国整体情况
+                val countryHeaderView : View = layoutInflater.inflate(R.layout.item_situation_country, rvAreaSet, false)
+                val tvRefreshTime : TextView = countryHeaderView.findViewById(R.id.tv_time_item_situation_country)
+                tvRefreshTime.text = " 更新时间：\n      ${TimeUtils.millis2String(it.modifyTime)}"
+                val tvNumber: TextView = countryHeaderView.findViewById(R.id.tv_number_item_situation_country)
+                tvNumber.text = " 全国：\n     确诊${it?.confirmedCount}例  疑似${it?.suspectedCount}例  治愈${it?.curedCount}例  死亡${it?.deadCount}例"
+                val tvPassWay : TextView = countryHeaderView.findViewById(R.id.tv_passWay_item_situation_country)
+                tvPassWay.text = " 传播途径：\n     ${it.passWay}"
+                val ivMapCountry : ImageView = countryHeaderView.findViewById(R.id.iv_map_situation_country)
+                Glide.with(this@SituationFragment)
+                    .load(it.imgUrl)
+                    .into(ivMapCountry)
+
+                rvAdapter?.addHeaderView(countryHeaderView)
+                //关闭 Loading动画
+                loading?.animation?.cancel()
+                loading?.visibility = View.INVISIBLE
+            })
+        }
         viewModel.apply {
             areaSituation.observe(this@SituationFragment, Observer {
                 if(rvAdapter == null)  return@Observer
                 rvAdapter?.setNewData(it.toMutableList())
-//                rvAdapter?.notifyDataSetChanged()
-                loading?.visibility = View.GONE
             })
         }
     }

@@ -88,4 +88,8 @@ dependencies {
 //    implementation'com.download.library:Downloader:4.1.2'
     implementation 'com.just.agentweb:agentweb:4.1.2'
 //    implementation 'com.just.agentweb:filechooser:4.1.2'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 }

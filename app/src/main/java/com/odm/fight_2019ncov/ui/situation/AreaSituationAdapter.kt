@@ -25,7 +25,7 @@ class AreaSituationAdapter : BaseNodeAdapter() {
 
 
     companion object {
-        const val EXPAND_COLLAPSE_PAYLOAD = 110
+        const val EXPAND_COLLAPSE_PAYLOAD = 90
     }
 
     init {

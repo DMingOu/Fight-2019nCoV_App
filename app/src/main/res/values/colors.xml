@@ -11,6 +11,15 @@
     <color name="unreadTextColor">#00ff00</color>
     <color name="msgTextColor">#00ff00</color>
 
+    <color name="count_more_1000">#76171C</color>
+    <color name="count_more_500">#C93130</color>
+    <color name="count_more_100">#E16554</color>
+    <color name="count_more_10">#F1A88B</color>
+    <color name="count_more_0">#FCEED3</color>
+
+
+
+
     <color name="white">#FFFFFF</color> <!--白色 -->
     <color name="ivory">#FFFFF0</color> <!--象牙色 -->
     <color name="lightyellow">#FFFFE0</color> <!--亮黄色 -->
