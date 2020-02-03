@@ -24,7 +24,7 @@ import org.koin.android.ext.android.inject
 
 
 /**
- * @description: 24小时内最新消息 页面
+ * @description: 实时事件 页面
  * @author: ODM
  * @date: 2020/1/26
  */

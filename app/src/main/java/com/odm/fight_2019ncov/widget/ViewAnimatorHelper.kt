@@ -22,9 +22,8 @@ class ViewAnimatorHelper {
      * 在 onStart 生命周期绑定
      */
     fun bindView(view: View?) {
-        if (view == null) throw NullPointerException("The view should not be null")
+        if (view == null) throw NullPointerException("The view should not be null") as Throwable
         this.view = view
-        LogUtils.d("绑定View")
         if (viewPropertyAnimator == null) {
             viewPropertyAnimator = view.animate()
             viewPropertyAnimator?.duration = 300
@@ -36,7 +35,6 @@ class ViewAnimatorHelper {
      * onStop 解除绑定
      */
     fun unBindView() {
-        LogUtils.d("unBind")
         this.view = null
         this.viewPropertyAnimator = null
     }
@@ -45,7 +43,6 @@ class ViewAnimatorHelper {
      * 缩放动画，
      */
     fun showAndScale() {
-        LogUtils.d("启动show 缩放动画")
         view?.visibility = View.VISIBLE
         viewPropertyAnimator?.scaleX(1.0f)?.scaleY(1.0f)?.alpha(1.0f)?.setListener(null)
     }
@@ -57,7 +54,6 @@ class ViewAnimatorHelper {
     private val animationListener: Animator.AnimatorListener =
         object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator) {
-                LogUtils.d("启动hide 缩放动画")
                 isAnimating = true
             }
 
