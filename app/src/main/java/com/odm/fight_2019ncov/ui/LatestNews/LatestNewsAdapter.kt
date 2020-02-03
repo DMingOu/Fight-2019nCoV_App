@@ -19,8 +19,8 @@ class LatestNewsAdapter (data : MutableList<LatestNews> ?)
             Logger.d("item  null")
             return
         }
-        var summary : String ?= null
-        summary = if(item.summary.length >= 150) {
+
+        val summary = if(item.summary.length >= 150) {
             item.summary.substring(0,150)+ "......"
         } else {
             item.summary

@@ -18,6 +18,7 @@ import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseFragment
 import com.odm.fight_2019ncov.ui.AgentWebActivity
 import com.odm.fight_2019ncov.ui.WebContainerActivity
+import com.odm.fight_2019ncov.widget.AnimatedFloatingButton
 import com.odm.fight_2019ncov.widget.SmoothScrollLayoutManager
 import com.odm.fight_2019ncov.widget.ViewAnimatorHelper
 import org.koin.android.ext.android.inject
@@ -39,11 +40,12 @@ class LatestNewsFragment : BaseFragment() {
 
     //加载动画
     var loading : SpinKitView ?= null
-    //顶部悬浮按钮
-    var btnScollTop : FloatingActionButton ?= null
-    var viewAnimatorHelper  = ViewAnimatorHelper()
+
     //依赖注入获取ViewModel实例
-     val viewModel: LatestNewsViewModel by inject()
+    val viewModel: LatestNewsViewModel by inject()
+
+    //置顶功能悬浮按钮
+    var btnTop : AnimatedFloatingButton ?= null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,18 +62,7 @@ class LatestNewsFragment : BaseFragment() {
         initObservableLiveData()
     }
 
-    override fun onStart() {
-        super.onStart()
-        viewAnimatorHelper.bindView(btnScollTop)
-        if(btnScollTop?.visibility != View.VISIBLE) {
-            btnScollTop?.visibility = View.VISIBLE
-        }
-    }
 
-    override fun onStop() {
-        super.onStop()
-        viewAnimatorHelper.unBindView()
-    }
 
     /**
      * 初始化控件
@@ -82,6 +73,8 @@ class LatestNewsFragment : BaseFragment() {
         if(loading?.visibility != View.VISIBLE) {
             loading?.visibility = View.VISIBLE
         }
+
+        btnTop = activity?.findViewById(R.id.afb_top)
 
         ivCheer = activity?.findViewById(R.id.iv_banner)
 
@@ -102,12 +95,12 @@ class LatestNewsFragment : BaseFragment() {
         rvAdapter?.addHeaderView(bannerHeaderView)
 
 
-        btnScollTop = activity?.findViewById(R.id.fbtn_scroll_top)
-        btnScollTop?.visibility = View.VISIBLE
-        btnScollTop?.setOnClickListener {
-            //悬浮按钮点击事件 ： 列表平滑回到顶部
+        //初始化置顶按钮的点击事件
+        btnTop = activity?.findViewById(R.id.afb_top)
+        btnTop?.setOnClickListener {
             rvNews?.smoothScrollToPosition(0)
         }
+
     }
 
     override val layoutId: Int
@@ -137,13 +130,10 @@ class LatestNewsFragment : BaseFragment() {
     private val onScrollListener: RecyclerView.OnScrollListener =
         object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if(dy > 100 || dy < -100) println("dy : ${dy}}")
-                if (dy > 0 && btnScollTop?.visibility == View.VISIBLE && !viewAnimatorHelper.isAnimating()) {
-                    //向下滑动，隐藏
-                    viewAnimatorHelper.hideAndScale()
-                } else if (dy < 0 && btnScollTop?.visibility != View.VISIBLE) {
-                    //向上滑动，显现
-                    viewAnimatorHelper.showAndScale()
+                if(dy > 0) {
+                    btnTop?.hideAnimation()
+                } else {
+                    btnTop?.showAnimation()
                 }
             }
         }

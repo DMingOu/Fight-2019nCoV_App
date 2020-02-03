@@ -40,7 +40,7 @@ class ViewAnimatorHelper {
     }
 
     /**
-     * 缩放动画，
+     * 缩放动画
      */
     fun showAndScale() {
         view?.visibility = View.VISIBLE
