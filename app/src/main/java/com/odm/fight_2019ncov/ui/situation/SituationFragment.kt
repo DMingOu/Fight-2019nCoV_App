@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.TimeUtils
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.animation.BaseAnimation
 import com.github.ybq.android.spinkit.SpinKitView
 import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseFragment
@@ -60,7 +61,7 @@ class SituationFragment : BaseFragment() {
         rvAreaSet?.layoutManager = LinearLayoutManager(requireContext())
         rvAreaSet?.adapter = rvAdapter
         rvAdapter?.animationEnable = true
-//        rvAdapter?.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInBottom)
+        rvAdapter?.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInBottom)
     }
 
 
@@ -78,7 +79,7 @@ class SituationFragment : BaseFragment() {
                 val tvNumber: TextView = countryHeaderView.findViewById(R.id.tv_number_item_situation_country)
                 tvNumber.text = " 全国：\n     确诊${it?.confirmedCount}例  疑似${it?.suspectedCount}例  治愈${it?.curedCount}例  死亡${it?.deadCount}例"
                 val tvPassWay : TextView = countryHeaderView.findViewById(R.id.tv_passWay_item_situation_country)
-                tvPassWay.text = " 传播途径：\n     ${it.passWay}"
+                tvPassWay.text = " 传播途径：\n     经呼吸道飞沫传播，亦可通过接触传播，存在粪-口传播可能性"
                 val ivMapCountry : ImageView = countryHeaderView.findViewById(R.id.iv_map_situation_country)
                 Glide.with(this@SituationFragment)
                     .load(it.imgUrl)

@@ -1,26 +1,22 @@
 package com.odm.fight_2019ncov.ui.LatestNews
 
+import android.animation.ObjectAnimator
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
+import android.util.Property
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.blankj.utilcode.util.LogUtils
 import com.github.ybq.android.spinkit.SpinKitView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.odm.fight_2019ncov.Constants
 import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseFragment
 import com.odm.fight_2019ncov.ui.AgentWebActivity
-import com.odm.fight_2019ncov.ui.WebContainerActivity
 import com.odm.fight_2019ncov.widget.AnimatedFloatingButton
 import com.odm.fight_2019ncov.widget.SmoothScrollLayoutManager
-import com.odm.fight_2019ncov.widget.ViewAnimatorHelper
 import org.koin.android.ext.android.inject
 
 
@@ -100,7 +96,10 @@ class LatestNewsFragment : BaseFragment() {
         btnTop?.setOnClickListener {
             rvNews?.smoothScrollToPosition(0)
         }
-
+/*        val animator: ObjectAnimator = ObjectAnimator.ofFloat( btnTop  , "rotationX", 0.0f, 180.0f)
+        animator.duration = 1000
+        btnTop?.setCustomAnimator(animator , animator)*/
+        btnTop?.setAnimationType(AnimatedFloatingButton.AnimationType.TRANSLATION_DOWN_UP)
     }
 
     override val layoutId: Int
@@ -130,21 +129,14 @@ class LatestNewsFragment : BaseFragment() {
     private val onScrollListener: RecyclerView.OnScrollListener =
         object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if(dy > 0) {
+                if(dy > 50) {
                     btnTop?.hideAnimation()
-                } else {
+                }
+                if(dy < -50 ) {
                     btnTop?.showAnimation()
                 }
             }
         }
-
-
-
-
-
-
-
-
 
 }
 
