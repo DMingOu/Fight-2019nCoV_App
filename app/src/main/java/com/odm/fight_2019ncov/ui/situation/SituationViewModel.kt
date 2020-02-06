@@ -3,11 +3,13 @@ package com.odm.fight_2019ncov.ui.situation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.blankj.utilcode.util.LogUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.odm.fight_2019ncov.base.BaseViewModel
 import com.odm.fight_2019ncov.model.entity.*
 import com.odm.fight_2019ncov.model.net.ApiResult
+import com.odm.fight_2019ncov.model.net.ApiService
 import java.io.Reader
 import java.lang.reflect.Type
 
@@ -32,11 +34,11 @@ class SituationViewModel (private val repository: SituationRepository) : BaseVie
     }
 
 
-    fun getSituationAll() {
+/*    fun getSituationAll() {
         launch{
             val result = repository.suspendGetAllData()
             if(result  is ApiResult.Success) {
-                _areaSituationList.value = result.data.data.getAreaStat
+                _areaSituationList.value = result.data.getAreaStat
 //                LogUtils.e(_areaSituationList.value.toString())
             }
             if(result is ApiResult.Error) {
@@ -44,23 +46,35 @@ class SituationViewModel (private val repository: SituationRepository) : BaseVie
                 LogUtils.e(result.toString())
             }
         }
-    }
+    }*/
 
 
-    fun getAllInfoRaw() {
+    private fun getAllInfoRaw() {
         launch {
             val result = repository.suspendAllRawData()
             val reader: Reader = result.body()!!.charStream()
             if(result.raw().isSuccessful) {
-                val objType: Type =  object : TypeToken<AllSituation>() {}.type
-                val allInfoObject : AllSituation = Gson().fromJson(reader, objType)
+                val allInfoObject : AllSituation = Gson().fromJson(reader, ApiService.allInfoType)
                 _areaSituationList.value = allInfoObject.getAreaStat
                 _staticSituation.value = allInfoObject.getStatisticsService
             } else {
-                LogUtils.e("请求失败")
+                ToastUtils.showShort("请求数据出现异常")
             }
         }
     }
+
+/*    fun getRumorData(){
+        launch {
+            val result = repository.suspendGetRumorListData()
+            if(result is ApiResult.Success) {
+                val rumorList = result.data
+                LogUtils.d(rumorList)
+            }
+            if(result is ApiResult.Error){
+                LogUtils.d("谣言数据转换失败  " + result.exception.message)
+            }
+        }
+    }*/
 
 
 }

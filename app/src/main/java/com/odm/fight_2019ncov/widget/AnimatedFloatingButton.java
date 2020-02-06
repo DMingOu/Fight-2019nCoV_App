@@ -224,7 +224,6 @@ public class AnimatedFloatingButton extends FloatingActionButton {
      * 取消动画效果
      */
     public void cancelAnimation(){
-        //Todo 可以用一个List表示
         if(animator != null && isAnimating) {
             animator.cancel();
         }
@@ -363,7 +362,6 @@ public class AnimatedFloatingButton extends FloatingActionButton {
 
     /**
      * 向下隐藏
-     * 平移 ：像素单位px，不是dp
      */
     private void downHideTranslation(){
         float y = getScreenHeight() - getTop();

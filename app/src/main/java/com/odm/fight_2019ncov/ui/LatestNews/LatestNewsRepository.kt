@@ -6,6 +6,8 @@ import com.odm.fight_2019ncov.model.net.ApiService
 import com.odm.fight_2019ncov.model.net.NetRetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.ResponseBody
+import retrofit2.Response
 
 /**
  * @description: 实时最新消息 Repository 类
@@ -16,13 +18,11 @@ class LatestNewsRepository : BaseRepository() {
 
 /*    suspend fun suspendGetLatestNewsData() = withContext(Dispatchers.IO) {
 
-//        LogUtils.d(NetRetrofitClient.service.getLatestNews().data)
         safeApiRequest(request = { executeResponse(response = NetRetrofitClient.service.getLatestNews() , errorBlock = { println("网络出错了")} ) } ,
             errorMessage = "")
-
     }*/
 
-    suspend fun suspendGetLatestNewsRawData() = withContext(Dispatchers.IO) {
-        NetRetrofitClient.service.getLatestNewsRaw(ApiService.BASE_URL + "/data/getTimelineService").execute()
+    suspend fun suspendGetLatestNewsRawData(): Response<ResponseBody> = withContext(Dispatchers.IO) {
+        NetRetrofitClient.service.getLatestNewsRaw(ApiService.BASE_URL + ApiService.GET_TIMELINE).execute()
     }
 }

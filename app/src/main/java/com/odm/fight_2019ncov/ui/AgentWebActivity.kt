@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.just.agentweb.AgentWeb
+import com.leaf.library.StatusBarUtil
 import com.odm.fight_2019ncov.Constants
 import com.odm.fight_2019ncov.R
 import com.odm.fight_2019ncov.base.BaseActivity
@@ -19,6 +20,8 @@ class AgentWebActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //设置沉浸式状态栏
+        StatusBarUtil.setColor(this,resources.getColor(R.color.mediumvioletred))
         setContentView(layoutId)
         val sIntent = intent
         urlString = sIntent.getStringExtra(Constants.WEB_URL)
