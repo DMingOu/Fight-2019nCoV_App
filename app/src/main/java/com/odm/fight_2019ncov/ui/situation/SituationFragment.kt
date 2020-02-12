@@ -75,11 +75,11 @@ class SituationFragment : BaseFragment() {
                 //全国整体情况
                 val countryHeaderView : View = layoutInflater.inflate(R.layout.item_situation_country, rvAreaSet, false)
                 val tvRefreshTime : TextView = countryHeaderView.findViewById(R.id.tv_time_item_situation_country)
-                tvRefreshTime.text = " 更新时间：\n      ${TimeUtils.millis2String(it.modifyTime)}"
+                tvRefreshTime.text = " 更新时间：\n   ${TimeUtils.millis2String(it.modifyTime)}"
                 val tvNumber: TextView = countryHeaderView.findViewById(R.id.tv_number_item_situation_country)
-                tvNumber.text = " 全国：\n     确诊${it?.confirmedCount}例  疑似${it?.suspectedCount}例  治愈${it?.curedCount}例  死亡${it?.deadCount}例"
+                tvNumber.text = " 全国：\n  确诊${it?.confirmedCount}例  疑似${it?.suspectedCount}例  治愈${it?.curedCount}例  死亡${it?.deadCount}例"
                 val tvPassWay : TextView = countryHeaderView.findViewById(R.id.tv_passWay_item_situation_country)
-                tvPassWay.text = " 传播途径：\n     经呼吸道飞沫传播，亦可通过接触传播，存在粪-口传播可能性"
+                tvPassWay.text = " 传播途径：\n  经呼吸道飞沫传播，亦可通过接触传播，存在粪-口传播可能性"
                 val ivMapCountry : ImageView = countryHeaderView.findViewById(R.id.iv_map_situation_country)
                 Glide.with(this@SituationFragment)
                     .load(it.imgUrl)

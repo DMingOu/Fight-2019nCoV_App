@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="395dp"
+    android:layout_height="320dp"
     android:layout_marginTop="5dp"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
@@ -20,49 +20,48 @@
         <ImageView
             android:id="@+id/iv_map_situation_country"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="220dp"
             android:fitsSystemWindows="false"
             tools:src="@drawable/banner2"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:layout_above="@id/tv_number_item_situation_country"/>
 
         <TextView
             android:id="@+id/tv_number_item_situation_country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/iv_map_situation_country"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:textColor="@color/black"
-            tools:text=" 全国：\n      XXXXXXXXXXXXXXXXXXXXXXXXXX"/>
+            android:layout_above="@id/tv_passWay_item_situation_country"
+            tools:text=" 全国：\n    XXXXXXXXXXXXXXXXXXXXXXXXXX"/>
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
-            android:background="@color/gray"
+            android:background="@color/gainsboro"
             android:layout_below="@id/tv_number_item_situation_country"
             />
         <TextView
             android:id = "@+id/tv_passWay_item_situation_country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_number_item_situation_country"
             android:textColor="@color/black"
-
+            android:textSize="13sp"
+            android:layout_above="@id/tv_time_item_situation_country"
             tools:text = " 传播途径：\n      经呼吸道飞沫传播，亦可通过接触传播，存在粪-口传播可能性"/>
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
-            android:background="@color/gray"
-            android:layout_below="@id/tv_passWay_item_situation_country"
+            android:background="@color/gainsboro"
+            android:layout_above="@id/tv_time_item_situation_country"
             />
         <TextView
             android:id="@+id/tv_time_item_situation_country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_passWay_item_situation_country"
             android:textColor="@color/black"
+            android:textSize="13sp"
+            android:layout_alignParentBottom="true"
             tools:text = " 更新时间：\n      XXXXXXXXXXXXXXXXXX"/>
-
-
-
 
     </RelativeLayout>
 
